@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Image from './Image';
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -19,7 +18,10 @@ import {
 	FormText,
 	CardHeader,
 	CardSubtitle,
+	CardImgOverlay,
 } from 'reactstrap';
+
+function Alert(props) {}
 
 class OrderForm extends Component {
 	constructor(props) {
@@ -56,9 +58,7 @@ class OrderForm extends Component {
 	handleSize = (event) => {
 		this.setState({
 			size: event.target.value,
-			szActive1: event.target.value,
 		});
-		console.log(this.state.size);
 	};
 	handleSugarLevel = (event) => {
 		this.setState({
@@ -97,7 +97,9 @@ class OrderForm extends Component {
 
 		return (
 			<div className="col">
-				cont
+				<Card className="border border-dark border-top-0 rounded-0 m-0 pl-0">
+					<CardImg className="rounded-0" src="/assets/teamix.jpg" />
+				</Card>
 				<div className="row" style={divStyle}>
 					row
 					<div className="col" style={divStyle}>
@@ -145,7 +147,7 @@ class OrderForm extends Component {
 											value="Small"
 											outline
 											color="dark"
-											active={this.state.szActive1}
+											active={this.state.size === 'Small'}
 										>
 											Small
 										</Button>
@@ -154,7 +156,7 @@ class OrderForm extends Component {
 											value="Medium"
 											outline
 											color="dark"
-											active={this.state.szActive1}
+											active={this.state.size === 'Medium'}
 										>
 											Medium
 										</Button>
@@ -163,7 +165,7 @@ class OrderForm extends Component {
 											value="Large"
 											outline
 											color="dark"
-											active={this.state.szActive1}
+											active={this.state.size === 'Large'}
 										>
 											Large
 										</Button>
