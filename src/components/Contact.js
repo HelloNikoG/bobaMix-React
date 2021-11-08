@@ -1,10 +1,10 @@
 import React from 'react';
-import { Card, CardImg, CardTitle, CardText } from 'reactstrap';
+import { Card, CardImg, CardTitle, CardText, Container } from 'reactstrap';
 
 function Contact() {
 	return (
-		<>
-			<div className="row align-items-center">
+		<Container fluid>
+			<div className=" mt-3 row align-items-center">
 				<div className="col">
 					<Card className="border-dark rounded-0">
 						<CardImg
@@ -30,7 +30,7 @@ function Contact() {
 					</Card>
 				</div>
 			</div>
-		</>
+		</Container>
 	);
 }
 

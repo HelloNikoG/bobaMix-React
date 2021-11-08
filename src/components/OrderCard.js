@@ -61,7 +61,7 @@ class OrderCard extends Component {
 	handleSubmit = (e) => {
 		alert(
 			`Thanks ${this.state.name}! \n we will text you when your order is
-			ready!\n ${this.state.drinkBase}`
+			ready!`
 		);
 		e.preventDefault();
 	};
@@ -91,7 +91,7 @@ class OrderCard extends Component {
 
 	render() {
 		return (
-			<Col>
+			<Col className="justify-contents-center">
 				<Alert color="info" isOpen={true} className="sticky-top">
 					Building your order ​🧋​👌​:
 					<Row>
@@ -120,34 +120,41 @@ class OrderCard extends Component {
 								Input your name and number and we will text you when your order
 								is ready!
 							</FormText>
+
 							<FormGroup>
-								<Label htmlFor="customer name">
-									<Input
-										type="text"
-										id="customer name"
-										name="name"
-										value={this.state.name}
-										placeholder="name"
-										onChange={this.handleName}
-									/>
-								</Label>
-								<Label htmlFor="phone number">
-									<Input
-										type="text"
-										id="phone number"
-										name="phone number"
-										value={this.state.phoneNum}
-										placeholder="phone number"
-										onChange={this.handlePhoneNum}
-									/>
-								</Label>
+								<Row>
+									<Col md="6">
+										<Label htmlFor="customer name">
+											<Input
+												type="text"
+												id="customer name"
+												name="name"
+												value={this.state.name}
+												placeholder="name"
+												onChange={this.handleName}
+											/>
+										</Label>
+									</Col>
+									<Col md="6">
+										<Label htmlFor="phone number">
+											<Input
+												type="text"
+												id="phone number"
+												name="phone number"
+												value={this.state.phoneNum}
+												placeholder="phone number"
+												onChange={this.handlePhoneNum}
+											/>
+										</Label>
+									</Col>
+								</Row>
 							</FormGroup>
 						</Col>
 
 						<Row>
-							<Col>
+							<Col className="mx-auto">
 								<h4>temperature</h4>
-								<ButtonGroup className="btn-block mr-5">
+								<ButtonGroup className="btn-block ">
 									<Button
 										onClick={this.handleTemp}
 										value="hot"

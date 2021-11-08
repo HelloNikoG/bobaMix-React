@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, Navbar, NavbarBrand, NavItem, NavLink } from 'reactstrap';
+import { Col, Nav, Navbar, NavbarBrand, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 function NavComponent() {
@@ -7,12 +7,11 @@ function NavComponent() {
 		color: '#fff',
 	};
 	return (
-		<div>
+		<>
 			<Navbar color="dark" className="border-bottom border-dark p-0">
 				<NavbarBrand className="m-0 p-0 mr-auto">
 					<img src="/assets/logo.png" width="75" height="75" />
 				</NavbarBrand>
-
 				<Nav className="mt-0 mb-0 p-0">
 					<NavItem className="nav">
 						<Link to="/order">
@@ -31,7 +30,7 @@ function NavComponent() {
 					</NavItem>
 				</Nav>
 			</Navbar>
-		</div>
+		</>
 	);
 }
 
