@@ -20,9 +20,9 @@ function ImageCard() {
 	return (
 		<Card>
 			<CardImg height="auto" width="200 px" src="/assets/teamix.jpg"></CardImg>
-			<CardImgOverlay dark>
+			<CardImgOverlay>
 				<CardTitle style={textColor}>
-					<h1 style={align}>Start Your Order</h1>
+					<h2 style={align}>Start Your Order 🧋​</h2>
 				</CardTitle>
 			</CardImgOverlay>
 		</Card>

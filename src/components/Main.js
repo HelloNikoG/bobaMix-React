@@ -8,10 +8,9 @@ import { Container, Row, Col, Card } from 'reactstrap';
 
 function Main() {
 	return (
-		<Container className="mt-5">
+		<Container className="mt-5 container-fluid">
 			<Row>
-				<Col className=" border border-dark">
-					{/* <img className="img-fluid" src="assets/teamix.jpg" height="100 px" /> */}
+				<Col>
 					<ImageCard />
 				</Col>
 				<Col>

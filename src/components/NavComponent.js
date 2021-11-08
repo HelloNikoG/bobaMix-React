@@ -18,7 +18,7 @@ function NavComponent() {
 	};
 	return (
 		<div>
-			<Navbar color="dark" className="border-bottom border-dark">
+			<Navbar color="dark" className="border-bottom border-dark p-0">
 				<NavbarBrand className="m-0 p-0 mr-auto">
 					<img src="/assets/logo.png" width="75" height="75" />
 				</NavbarBrand>
@@ -41,25 +41,6 @@ function NavComponent() {
 					</NavItem>
 				</Nav>
 			</Navbar>
-
-			{/* <Navbar light className="border-bottom border-dark">
-				<NavbarBrand className="mr-auto" href="/">
-					<img src="/assets/logo.png" width="100" height="100" />
-				</NavbarBrand>
-				<NavbarToggler className="mr-2" />
-				<Collapse navbar>
-					<Nav navbar>
-						<NavItem>
-							<NavLink href="/components/">Components</NavLink>
-						</NavItem>
-						<NavItem>
-							<NavLink href="https://github.com/reactstrap/reactstrap">
-								GitHub
-							</NavLink>
-						</NavItem>
-					</Nav>
-				</Collapse>
-			</Navbar> */}
 		</div>
 	);
 }
