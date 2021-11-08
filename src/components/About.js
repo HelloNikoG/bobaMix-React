@@ -1,8 +1,6 @@
 import React from 'react';
 import { Card, CardImg, CardTitle, CardText } from 'reactstrap';
 
-import OrderForm from './OrderForm';
-
 function About() {
 	return (
 		<>

@@ -1,24 +1,15 @@
 import React, { Component } from 'react';
 import {
-	Breadcrumb,
-	BreadcrumbItem,
 	Button,
 	ButtonGroup,
-	ButtonToggle,
 	Form,
 	FormGroup,
 	Label,
 	Input,
-	Col,
-	FormFeedback,
 	Card,
 	CardTitle,
-	CardText,
 	CardImg,
 	FormText,
-	CardHeader,
-	CardSubtitle,
-	CardImgOverlay,
 } from 'reactstrap';
 
 function Alert(props) {}

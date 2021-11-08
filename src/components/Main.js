@@ -3,8 +3,8 @@ import OrderForm from './OrderForm';
 import OrderCard from './OrderCard';
 
 import ImageCard from './ImageCard';
-import AboutCard from './AboutCard';
-import { Container, Row, Col, Card } from 'reactstrap';
+
+import { Container, Row, Col } from 'reactstrap';
 
 function Main() {
 	return (

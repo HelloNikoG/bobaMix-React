@@ -2,12 +2,15 @@ import React from 'react';
 import { Card, CardImg, CardTitle, CardText } from 'reactstrap';
 
 function Contact() {
-    return (
-        <>
+	return (
+		<>
 			<div className="row align-items-center">
 				<div className="col">
 					<Card className="border-dark rounded-0">
-						<CardImg className="rounded-0" src="/assets/teapeople.jpg"></CardImg>
+						<CardImg
+							className="rounded-0"
+							src="/assets/teapeople.jpg"
+						></CardImg>
 						<CardTitle>What is Boba?</CardTitle>
 						<CardText className="text-left">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -28,7 +31,7 @@ function Contact() {
 				</div>
 			</div>
 		</>
-    )
+	);
 }
 
-export default Contact
+export default Contact;

@@ -1,15 +1,5 @@
 import React from 'react';
-import {
-	Nav,
-	Navbar,
-	NavbarBrand,
-	NavItem,
-	NavLink,
-	NavbarToggler,
-	Fade,
-	Collapse,
-	Button,
-} from 'reactstrap';
+import { Nav, Navbar, NavbarBrand, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 function NavComponent() {
