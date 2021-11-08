@@ -1,15 +1,5 @@
 import React from 'react';
-import {
-	Alert,
-	Col,
-	Row,
-	Card,
-	CardTitle,
-	CardSubtitle,
-	CardImg,
-	CardImgOverlay,
-} from 'reactstrap';
-import OrderCard from './OrderCard';
+import { Card, CardTitle, CardImg, CardImgOverlay } from 'reactstrap';
 
 function ImageCard() {
 	const textColor = { color: 'white' };
