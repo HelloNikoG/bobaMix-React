@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row, Card } from 'reactstrap';
+import { Col, Row, Card, CardImg, CardTitle, CardText } from 'reactstrap';
 
 function AboutCard() {
 	return (
