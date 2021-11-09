@@ -4,8 +4,8 @@ import { Col, Container, Row } from 'reactstrap';
 function OrderCard2() {
 	return (
 		<>
-			<Row className="justify-content-center">
-				<div>order</div>
+			<Row className="justify-content-left">
+				<div>hello world</div>
 			</Row>
 		</>
 	);

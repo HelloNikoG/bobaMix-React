@@ -12,25 +12,16 @@ import {
 	Card,
 	FormText,
 } from 'reactstrap';
+import Toppings from './Toppings';
 
-const toppings = [
-	{
-		name: 'BOBA',
-		price: 0.5,
-	},
-	{
-		name: 'HERBAL JELLY',
-		price: 0.5,
-	},
-	{
-		name: 'PUDDING',
-		price: 0.5,
-	},
-	{
-		name: 'RED BEAN',
-		price: 0.5,
-	},
-];
+// const toppings = [
+// 	{ name: 'BOBA', price: 0.5 },
+// 	{ name: 'TEA JELLY', price: 0.5 },
+// 	{ name: 'PUDDING', price: 0.5 },
+// 	{ name: 'RED BEAN', price: 0.5 },
+// 	{ name: 'FRUIT', price: 0.5 },
+// ];
+
 class OrderCard extends Component {
 	constructor(props) {
 		super(props);
@@ -43,6 +34,14 @@ class OrderCard extends Component {
 			name: '',
 			phoneNum: '',
 			alert: false,
+			toppings: {
+				boba: false,
+				teaJelly: false,
+				pudding: false,
+				redBean: false,
+				freshFruit: false,
+				lycheeJelly: false,
+			},
 		};
 	}
 
@@ -89,67 +88,85 @@ class OrderCard extends Component {
 		});
 	};
 
+	handleToppings = (e) => {
+		let { name, active } = e.target;
+		this.setState((e) => {
+			let selected = e.toppings;
+			return (selected[name] = active);
+		});
+	};
+
 	render() {
+		const displayToppings = Object.keys(this.state.toppings);
 		return (
-			<Col className="justify-contents-center">
-				<Alert color="info" isOpen={true} className="sticky-top">
-					Building your order ​🧋​👌​:
+			<Col className="mt-3">
+				<Alert color="info" isOpen={true} className="sticky-top ">
 					<Row>
-						<Col>
-							<p>temp:{this.state.temp}</p>
+						<Col md="6">
+							<h4>Building your order:</h4>
 						</Col>
-						<Col>
-							<p>size:{this.state.size}</p>
-						</Col>
-						<Col>
-							<p>sugar:{this.state.sugarLevel}</p>
+						<Col md="6">
+							<h4 style={{ textAlign: 'right' }}>$</h4>
 						</Col>
 					</Row>
 					<Row>
-						<Col>Toppings:</Col>
+						<Col>
+							<p>
+								temp: <strong>{this.state.temp}</strong>
+							</p>
+						</Col>
+						<Col>
+							<p>
+								size: <strong>{this.state.size}</strong>
+							</p>
+						</Col>
+						<Col>
+							<p>
+								sugar: <strong>{this.state.sugarLevel}</strong>
+							</p>
+						</Col>
+					</Row>
+					<Row>
+						<Col>Toppings:{displayToppings}</Col>
 					</Row>
 				</Alert>
 
 				<Card className="border-dark">
 					<Form onSubmit={this.handleSubmit}>
-						<Col>
-							<h3>Your Order</h3>
-							<h4 style={{ textAlign: 'right' }}>${this.state.cost}</h4>
+						<h4 style={{ textAlign: 'right' }}>${this.state.cost}</h4>
 
-							<FormText color="muted">
-								Input your name and number and we will text you when your order
-								is ready!
-							</FormText>
-
-							<FormGroup>
-								<Row>
-									<Col md="6">
-										<Label htmlFor="customer name">
-											<Input
-												type="text"
-												id="customer name"
-												name="name"
-												value={this.state.name}
-												placeholder="name"
-												onChange={this.handleName}
-											/>
-										</Label>
-									</Col>
-									<Col md="6">
-										<Label htmlFor="phone number">
-											<Input
-												type="text"
-												id="phone number"
-												name="phone number"
-												value={this.state.phoneNum}
-												placeholder="phone number"
-												onChange={this.handlePhoneNum}
-											/>
-										</Label>
-									</Col>
-								</Row>
-							</FormGroup>
-						</Col>
+						<FormText color="muted">
+							Input your name and number and we will text you when your order is
+							ready!
+						</FormText>
+						<FormGroup>
+							<Row>
+								<Col>
+									<Label htmlFor="customer name">
+										<Input
+											type="text"
+											id="customer name"
+											name="name"
+											value={this.state.name}
+											placeholder="name"
+											onChange={this.handleName}
+										/>
+									</Label>
+								</Col>
+								<Col>
+									<Label htmlFor="phone number">
+										<Input
+											type="text"
+											id="phone number"
+											name="phone number"
+											value={this.state.phoneNum}
+											placeholder="phone number"
+											onChange={this.handlePhoneNum}
+										/>
+									</Label>
+								</Col>
+							</Row>
+						</FormGroup>
 
 						<Row>
 							<Col className="mx-auto">
@@ -198,7 +215,7 @@ class OrderCard extends Component {
 										active={this.state.sugarLevel === '75%'}
 										color={this.state.sugarLevel === '75%' ? 'info' : 'dark'}
 									>
-										100%
+										75%
 									</Button>
 								</ButtonGroup>
 							</Col>
@@ -234,7 +251,7 @@ class OrderCard extends Component {
 								</ButtonGroup>
 							</Col>
 							<Col className="col-md-6 mt-2">
-								<h4>tea drinkBase 🧋</h4>
+								<h4>tea base🧋</h4>
 								<ButtonGroup>
 									<Button
 										onClick={this.handleTeabase}
@@ -270,18 +287,57 @@ class OrderCard extends Component {
 									<Button
 										onClick={this.handleToppings}
 										value="boba"
-										active={this.state.size === 'boba'}
-										color={this.state.size === 'boba' ? 'info' : 'dark'}
+										name="boba"
+										active={this.state.toppings === 'boba'}
+										color={this.state.toppings === 'boba' ? 'info' : 'dark'}
 									>
 										BOBA
 									</Button>
-									<Button>HERB JELLY</Button>
-									<Button>PUDDING</Button>
-								</ButtonGroup>
-								<ButtonGroup className="mb-5">
-									<Button>RED BEAN</Button>
-									<Button>FRESH FRUIT</Button>
-									<Button className="pt-1 pb-1 ">LYCHEE JELLY</Button>
+									<Button
+										value="tea jelly"
+										name="teaJelly"
+										active={this.state.toppings === 'teaJelly'}
+										color={this.state.toppings === 'teaJelly' ? 'info' : 'dark'}
+									>
+										TEA JELLY
+									</Button>
+									<Button
+										value="pudding"
+										name="pudding"
+										active={this.state.toppings === 'pudding'}
+										color={this.state.toppings === 'pudding' ? 'info' : 'dark'}
+									>
+										PUDDING
+									</Button>
+
+									<Button
+										value="red bean"
+										name="redBean"
+										active={this.state.toppings === 'redBean'}
+										color={this.state.toppings === 'redBean' ? 'info' : 'dark'}
+									>
+										RED BEAN
+									</Button>
+									<Button
+										value="fresh fruit"
+										name="freshFruit"
+										active={this.state.toppings === 'freshFruit'}
+										color={
+											this.state.toppings === 'freshFruit' ? 'info' : 'dark'
+										}
+									>
+										FRESH FRUIT
+									</Button>
+									<Button
+										value="lychee  jelly"
+										name="lycheeJelly"
+										active={this.state.toppings === 'lycheeJelly'}
+										color={
+											this.state.toppings === 'lycheeJelly' ? 'info' : 'dark'
+										}
+									>
+										LYCHEE JELLY
+									</Button>
 								</ButtonGroup>
 							</Col>
 						</Row>

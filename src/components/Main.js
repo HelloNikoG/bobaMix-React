@@ -20,11 +20,11 @@ function Main() {
 					<ImageCard />
 				</Col>
 			</Row>
-			<Row>
+			{/* <Row>
 				<Col md="8">
 					<OrderCard2 />
 				</Col>
-			</Row>
+			</Row> */}
 			<Row>
 				<OrderCard />
 			</Row>
