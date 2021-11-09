@@ -12,7 +12,7 @@ function ImageCard() {
 			<CardImg height="auto" width="200 px" src="/assets/teamix.jpg"></CardImg>
 			<CardImgOverlay>
 				<CardTitle style={textColor}>
-					<h2 style={align}>Start Your Order 🧋​</h2>
+					<h2 style={align}>Start Your Order</h2>
 				</CardTitle>
 			</CardImgOverlay>
 		</Card>

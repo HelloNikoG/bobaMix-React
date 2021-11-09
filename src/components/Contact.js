@@ -1,35 +1,34 @@
 import React from 'react';
-import { Card, CardImg, CardTitle, CardText, Container } from 'reactstrap';
+import { Row, Col, Card, CardImg, CardText, Container } from 'reactstrap';
 
 function Contact() {
 	return (
 		<Container fluid>
-			<div className=" mt-3 row align-items-center">
-				<div className="col">
+			<Row>
+				<Col md="6">
 					<Card className="border-dark rounded-0">
-						<CardImg
-							className="rounded-0"
-							src="/assets/teapeople.jpg"
-						></CardImg>
-						<CardTitle>What is Boba?</CardTitle>
-						<CardText className="text-left">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua. Eros
-							in cursus turpis massa tincidunt dui ut. Scelerisque eu ultrices
-							vitae auctor eu. Arcu cursus vitae congue mauris rhoncus aenean
-							vel elit. Eget duis at tellus at urna condimentum mattis
-							pellentesque id. A arcu cursus vitae congue mauris rhoncus aenean
-							vel elit. Gravida dictum fusce ut placerat orci nulla pellentesque
-							dignissim. Sagittis nisl rhoncus mattis rhoncus urna neque. Libero
-							enim sed faucibus turpis in. Cras tincidunt lobortis feugiat
-							vivamus at augue eget. Mauris augue neque gravida in fermentum et.
-							Blandit libero volutpat sed cras ornare arcu. Tempor commodo
-							ullamcorper a lacus vestibulum sed arcu. Dui vivamus arcu felis
-							bibendum ut tristique et.
+						<CardImg className="mt-3 img-fluid" src="/assets/teapeople.jpg" />
+					</Card>
+				</Col>
+
+				<Col md="6">
+					<Card>
+						<CardText className="mt-3">
+							<h3>Get in touch </h3>
+							<p>
+								Boba is made from tapioca starch, also known as cassava starch,
+								which is why they're often also labeled as "tapioca pearls."
+								They're small spheres that are often simmered in a brown sugar
+								syrup to give them a sweet taste and dark black color. Boba is
+								practically tasteless, making it easy to pair with a variety of
+								drinks. There are also popping boba varieties, which are often
+								colorful and filled with fruit-flavored syrups like strawberry
+								or lychee.
+							</p>
 						</CardText>
 					</Card>
-				</div>
-			</div>
+				</Col>
+			</Row>
 		</Container>
 	);
 }

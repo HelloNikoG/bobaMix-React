@@ -14,14 +14,6 @@ import {
 } from 'reactstrap';
 import Toppings from './Toppings';
 
-// const toppings = [
-// 	{ name: 'BOBA', price: 0.5 },
-// 	{ name: 'TEA JELLY', price: 0.5 },
-// 	{ name: 'PUDDING', price: 0.5 },
-// 	{ name: 'RED BEAN', price: 0.5 },
-// 	{ name: 'FRUIT', price: 0.5 },
-// ];
-
 class OrderCard extends Component {
 	constructor(props) {
 		super(props);
@@ -30,7 +22,7 @@ class OrderCard extends Component {
 			size: ' ❓',
 			sugarLevel: ' ❓',
 			temp: ' ❓',
-			teaBase: '',
+			teaBase: ' ❓',
 			name: '',
 			phoneNum: '',
 			alert: false,
@@ -45,68 +37,34 @@ class OrderCard extends Component {
 		};
 	}
 
-	handleName = (e) => {
+	handleSelection = (e) => {
 		this.setState({
-			name: e.target.value,
-		});
-	};
-
-	handlePhoneNum = (e) => {
-		this.setState({
-			phoneNum: e.target.value,
+			[e.target.name]: e.target.value,
 		});
 	};
 
 	handleSubmit = (e) => {
 		alert(
-			`Thanks ${this.state.name}! \n we will text you when your order is
-			ready!`
+			`Thanks ${this.state.name}! \n We will text you when your order is ready!`
 		);
 		e.preventDefault();
 	};
 
-	handleTemp = (e) => {
-		this.setState({
-			temp: e.target.value,
-		});
-	};
-	handleSize = (e) => {
-		this.setState({
-			size: e.target.value,
-		});
-	};
-
-	handleSugarLevel = (e) => {
-		this.setState({
-			sugarLevel: e.target.value,
-		});
-	};
-
-	handleTeabase = (e) => {
-		this.setState({
-			teaBase: e.target.value,
-		});
-	};
-
 	handleToppings = (e) => {
-		let { name, active } = e.target;
+		let { value, active } = e.target;
 		this.setState((e) => {
 			let selected = e.toppings;
-			return (selected[name] = active);
+			return (selected[value] = active);
 		});
 	};
 
 	render() {
-		const displayToppings = Object.keys(this.state.toppings);
 		return (
 			<Col className="mt-3">
 				<Alert color="info" isOpen={true} className="sticky-top ">
 					<Row>
 						<Col md="6">
 							<h4>Building your order:</h4>
-						</Col>
-						<Col md="6">
-							<h4 style={{ textAlign: 'right' }}>$</h4>
 						</Col>
 					</Row>
 					<Row>
@@ -117,115 +75,146 @@ class OrderCard extends Component {
 						</Col>
 						<Col>
 							<p>
+								sugar: <strong>{this.state.sugarLevel}</strong>
+							</p>
+						</Col>
+						<Col>
+							<p>
 								size: <strong>{this.state.size}</strong>
 							</p>
 						</Col>
 						<Col>
 							<p>
-								sugar: <strong>{this.state.sugarLevel}</strong>
+								tea base: <strong>{this.state.teaBase}</strong>
 							</p>
 						</Col>
 					</Row>
 					<Row>
-						<Col>Toppings:{displayToppings}</Col>
+						<Col>Toppings:</Col>
 					</Row>
 				</Alert>
 
-				<Card className="border-dark">
-					<Form onSubmit={this.handleSubmit}>
-						<h4 style={{ textAlign: 'right' }}>${this.state.cost}</h4>
-
+				<Form onSubmit={this.handleSubmit}>
+					<Card>
 						<FormText color="muted">
 							Input your name and number and we will text you when your order is
 							ready!
 						</FormText>
-						<FormGroup>
-							<Row>
-								<Col>
-									<Label htmlFor="customer name">
-										<Input
-											type="text"
-											id="customer name"
-											name="name"
-											value={this.state.name}
-											placeholder="name"
-											onChange={this.handleName}
-										/>
-									</Label>
-								</Col>
-								<Col>
-									<Label htmlFor="phone number">
-										<Input
-											type="text"
-											id="phone number"
-											name="phone number"
-											value={this.state.phoneNum}
-											placeholder="phone number"
-											onChange={this.handlePhoneNum}
-										/>
-									</Label>
-								</Col>
-							</Row>
-						</FormGroup>
 
 						<Row>
-							<Col className="mx-auto">
-								<h4>temperature</h4>
-								<ButtonGroup className="btn-block ">
-									<Button
-										onClick={this.handleTemp}
-										value="hot"
-										active={this.state.size === 'hot' ? true : false}
-										color={this.state.temp === 'hot' ? 'danger' : 'dark'}
-									>
-										HOT
-									</Button>
-									<Button
-										onClick={this.handleTemp}
-										value="iced"
-										active={this.state.size === 'iced' ? true : false}
-										color={this.state.temp === 'iced' ? 'primary' : 'dark'}
-									>
-										ICED
-									</Button>
-								</ButtonGroup>
+							<Col>
+								<Label htmlFor="customer name">
+									<Input
+										type="text"
+										id="customer name"
+										name="name"
+										value={this.state.name}
+										placeholder="name"
+										onChange={this.handleSelection}
+									/>
+								</Label>
 							</Col>
 							<Col>
-								<h4>sugar level</h4>
-								<ButtonGroup className="btn-block ml-2">
-									<Button
-										onClick={this.handleSugarLevel}
-										value="25%"
-										active={this.state.sugarLevel === '25%' ? true : false}
-										color={this.state.sugarLevel === '25%' ? 'info' : 'dark'}
-									>
-										25%
-									</Button>
-									<Button
-										onClick={this.handleSugarLevel}
-										value="50%"
-										active={this.state.sugarLevel === '50%'}
-										color={this.state.sugarLevel === '50%' ? 'info' : 'dark'}
-									>
-										50%
-									</Button>
-									<Button
-										onClick={this.handleSugarLevel}
-										value="75%"
-										active={this.state.sugarLevel === '75%'}
-										color={this.state.sugarLevel === '75%' ? 'info' : 'dark'}
-									>
-										75%
-									</Button>
-								</ButtonGroup>
+								<Label htmlFor="phone number">
+									<Input
+										type="text"
+										id="phone number"
+										name="phoneNum"
+										value={this.state.phoneNum}
+										placeholder="phone number"
+										onChange={this.handleSelection}
+									/>
+								</Label>
 							</Col>
 						</Row>
-						<Row>
-							<Col className="col-md-6 mt-2">
-								<h4>drink size 🧋</h4>
-								<ButtonGroup>
+					</Card>
+
+					<Row>
+						<Col className="mx-2">
+							<Card className="mt-3">
+								<Row>
+									<Col>
+										<h4>temperature</h4>
+									</Col>
+								</Row>
+
+								<Row>
+									<Col>
+										<Button
+											className="px-3 mr-1 "
+											onClick={this.handleSelection}
+											name="temp"
+											value="hot"
+											active={this.state.size === 'hot' ? true : false}
+											color={this.state.temp === 'hot' ? 'danger' : 'dark'}
+										>
+											HOT
+										</Button>
+										<Button
+											className="px-3 ml-1"
+											onClick={this.handleSelection}
+											name="temp"
+											value="iced"
+											active={this.state.size === 'iced' ? true : false}
+											color={this.state.temp === 'iced' ? 'primary' : 'dark'}
+										>
+											ICED
+										</Button>
+									</Col>
+								</Row>
+							</Card>
+						</Col>
+						<Col>
+							<Card className="mt-3">
+								<Row>
+									<Col>
+										<h4>sweetness</h4>
+									</Col>
+								</Row>
+
+								<Row>
+									<Col>
+										<Button
+											onClick={this.handleSelection}
+											name="sugarLevel"
+											value="25%"
+											active={this.state.sugarLevel === '25%' ? true : false}
+											color={this.state.sugarLevel === '25%' ? 'info' : 'dark'}
+										>
+											25%
+										</Button>
+										<Button
+											onClick={this.handleSelection}
+											name="sugarLevel"
+											value="50%"
+											active={this.state.sugarLevel === '50%'}
+											color={this.state.sugarLevel === '50%' ? 'info' : 'dark'}
+										>
+											50%
+										</Button>
+										<Button
+											onClick={this.handleSelection}
+											name="sugarLevel"
+											value="75%"
+											active={this.state.sugarLevel === '75%'}
+											color={this.state.sugarLevel === '75%' ? 'info' : 'dark'}
+										>
+											75%
+										</Button>
+									</Col>
+								</Row>
+							</Card>
+						</Col>
+					</Row>
+					<Row>
+						<Col className="col-md-6 mt-2">
+							<Card className="mt-3">
+								<h4>drink size</h4>
+								<Row>
 									<Button
-										onClick={this.handleSize}
+										className="mx-5"
+										onClick={this.handleSelection}
+										name="size"
 										value="small"
 										active={this.state.size === 'small'}
 										color={this.state.size === 'small' ? 'info' : 'dark'}
@@ -233,7 +222,9 @@ class OrderCard extends Component {
 										SMALL
 									</Button>
 									<Button
-										onClick={this.handleSize}
+										className="mx-5"
+										onClick={this.handleSelection}
+										name="size"
 										value="medium"
 										active={this.state.size === 'medium'}
 										color={this.state.size === 'medium' ? 'info' : 'dark'}
@@ -241,55 +232,79 @@ class OrderCard extends Component {
 										MEDIUM
 									</Button>
 									<Button
-										onClick={this.handleSize}
+										className="mx-5"
+										onClick={this.handleSelection}
+										name="size"
 										value="large"
 										active={this.state.size === 'large'}
 										color={this.state.size === 'large' ? 'info' : 'dark'}
 									>
 										LARGE
 									</Button>
-								</ButtonGroup>
-							</Col>
-							<Col className="col-md-6 mt-2">
+								</Row>
+							</Card>
+						</Col>
+						<Col className="col-md-6 mt-2">
+							<Card>
 								<h4>tea base🧋</h4>
-								<ButtonGroup>
-									<Button
-										onClick={this.handleTeabase}
-										value="black"
-										active={this.state.teaBase === 'black'}
-										color={this.state.teaBase === 'black' ? 'info' : 'dark'}
-									>
-										BLACK
-									</Button>
-									<Button
-										onClick={this.handleTeabase}
-										value="green"
-										active={this.state.teaBase === 'green'}
-										color={this.state.teaBase === 'green' ? 'info' : 'dark'}
-									>
-										GREEN
-									</Button>
-									<Button
-										onClick={this.handleTeabase}
-										value="oolong"
-										active={this.state.teaBase === 'oolong'}
-										color={this.state.teaBase === 'oolong' ? 'info' : 'dark'}
-									>
-										OOLONG
-									</Button>
-								</ButtonGroup>
-							</Col>
-						</Row>
-						<Row>
-							<Col className="mt-3">
-								<h4>toppings</h4>
-								<ButtonGroup>
+
+								<Button
+									className="px-auto mx-1"
+									onClick={this.handleSelection}
+									name="teaBase"
+									value="milk tea"
+									active={this.state.teaBase === 'milk tea'}
+									color={this.state.teaBase === 'milk tea' ? 'info' : 'dark'}
+								>
+									MILK TEA
+								</Button>
+								<Button
+									className="px-1 mx-1"
+									onClick={this.handleSelection}
+									name="teaBase"
+									value="black"
+									active={this.state.teaBase === 'black'}
+									color={this.state.teaBase === 'black' ? 'info' : 'dark'}
+								>
+									BLACK
+								</Button>
+								<Button
+									className="px-1 mx-1"
+									onClick={this.handleSelection}
+									name="teaBase"
+									value="green"
+									active={this.state.teaBase === 'green'}
+									color={this.state.teaBase === 'green' ? 'info' : 'dark'}
+								>
+									GREEN
+								</Button>
+								<Button
+									onClick={this.handleSelection}
+									name="teaBase"
+									value="oolong"
+									active={this.state.teaBase === 'oolong'}
+									color={this.state.teaBase === 'oolong' ? 'info' : 'dark'}
+								>
+									OOLONG
+								</Button>
+							</Card>
+						</Col>
+					</Row>
+					<Row>
+						<Col className="mt-3">
+							<h4>toppings</h4>
+							<Button>t1</Button>
+							<Button>t2</Button>
+							<Button>t3</Button>
+							{/* <ButtonGroup>
 									<Button
 										onClick={this.handleToppings}
 										value="boba"
 										name="boba"
 										active={this.state.toppings === 'boba'}
-										color={this.state.toppings === 'boba' ? 'info' : 'dark'}
+										color={
+											this.state.toppings.boba === 'boba' ? 'info' : 'dark'
+										}
 									>
 										BOBA
 									</Button>
@@ -338,12 +353,11 @@ class OrderCard extends Component {
 									>
 										LYCHEE JELLY
 									</Button>
-								</ButtonGroup>
-							</Col>
-						</Row>
-					</Form>
-					<Button onClick={this.handleSubmit}>SUBMIT</Button>
-				</Card>
+								</ButtonGroup> */}
+						</Col>
+					</Row>
+				</Form>
+				<Button onClick={this.handleSubmit}>SUBMIT</Button>
 			</Col>
 		);
 	}

@@ -11,11 +11,6 @@ function Main() {
 	return (
 		<Container className="mt-3">
 			<Row>
-				<Col md="12" xs="3">
-					order
-				</Col>
-			</Row>
-			<Row>
 				<Col>
 					<ImageCard />
 				</Col>
